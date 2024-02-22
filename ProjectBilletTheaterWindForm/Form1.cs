@@ -109,12 +109,16 @@ namespace ProjectBilletTheaterWindForm
 
         private void button1_Click(object sender, EventArgs e)
         {
-            VerifierDisponibilitePlaces(Convert.ToInt32(textBox1.Text));
-        }
-
-        private void button1_DragLeave(object sender, EventArgs e)
-        {
-
+            if (int.TryParse(textBox1.Text, out int numberOfPlaces))
+            {
+                // Successfully parsed to an integer, proceed with the logic
+                VerifierDisponibilitePlaces(numberOfPlaces);
+            }
+            else
+            {
+                // Display an error message for non-integer input
+                MessageBox.Show("Saisir un nombre valide de places (entier).");
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
